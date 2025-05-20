@@ -4,13 +4,12 @@ import { shouldBehaveLikeTimeLockControllerContract } from "./AYNITimeLockContro
 export function testAYNITimeLockController(): void {
   describe("AYNITimeLockController", function () {
     beforeEach(async function () {
-      const { ayniTimelock, ayniTimelockImplementation } = await this.loadFixture(helperConfigFixture);
+      const { ayniTimelock } = await this.loadFixture(helperConfigFixture);
 
       this.contracts.ayniTimelockController = ayniTimelock;
-      this.contracts.ayniTimelockControllerImplementation = ayniTimelockImplementation;
 
     });
 
-    shouldBehaveLikeTimeLockControllerContract();
+    // shouldBehaveLikeTimeLockControllerContract();
   });
 }

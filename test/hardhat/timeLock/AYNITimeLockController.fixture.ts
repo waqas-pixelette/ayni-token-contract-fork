@@ -4,10 +4,9 @@ import { helperConfigFixture } from "../shared/HelperConfig.fixture";
 
 export async function ayniTimelockControllerFixture(): Promise<{
     ayniTimelock: AYNITimelockController,
-    ayniTimelockImplementation: AYNITimelockController
 }> {
 
-  const { ayniTimelock, ayniTimelockImplementation} = await loadFixture(helperConfigFixture);
+  const { ayniTimelock} = await loadFixture(helperConfigFixture);
 
-  return { ayniTimelock, ayniTimelockImplementation };
+  return { ayniTimelock };
 }
