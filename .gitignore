@@ -17,7 +17,6 @@ node_modules
 .env.development.local
 .env.test.local
 .env.production.local
-.env.local
 
 # Log files
 npm-debug.log*
@@ -67,3 +66,4 @@ flattened.sol
 lcov.info
 package-lock.json
 .DS_Store
+config.bat
