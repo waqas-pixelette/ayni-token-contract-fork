@@ -15,10 +15,22 @@
     ".gas-snapshot": "julia"
   },
   "npm.exclude": "**/lib/**",
-  "search.exclude": { "**/node_modules": true, "lib": true },
+  "search.exclude": {
+    "**/node_modules": true,
+    "lib": true
+  },
   "solidity.formatter": "forge",
   "yaml.schemas": {
     "file:///home/waqas/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
     "https://www.artillery.io/schema.json": []
+  },
+  "task.allowAutomaticTasks": true,
+  "debug.openDebug": "neverOpen",
+  "terminal.integrated.inheritEnv": false,
+  "tasks": {
+    "label": "lint on open",
+    "type": "shell",
+    "command": "npm run lint",
+    "runOn": "folderOpen"
   }
 }
