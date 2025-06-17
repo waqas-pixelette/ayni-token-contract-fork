@@ -35,11 +35,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const AYNITokenProxyContractAddress = await AYNITokenProxy.getAddress();
   console.log("AYNIToken (Proxy) deployed to:", AYNITokenProxyContractAddress);
 
-  const implAddress = await upgrades.erc1967.getImplementationAddress(
-    AYNITokenProxyContractAddress
-  );
-  console.log("AYNI Token Implementation deployed to:", implAddress);
-
   /*//////////////////////////////////////////////////////////////
                            TIMELOCK CONTROLLER DEPLOYMENT
   //////////////////////////////////////////////////////////////*/
@@ -94,11 +89,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const AYNIGovernorProxy = await AYNIGovernor.getAddress();
   console.log("AYNIGovernor (Proxy) deployed to:", AYNIGovernorProxy);
 
-  const implAddressGovernor = await upgrades.erc1967.getImplementationAddress(
-    AYNIGovernorProxy
-  );
-  console.log("AYNIGovernor Implementation deployed to:", implAddressGovernor);
-
   // Verify Contract inside the script
   if (chainId !== "31337" && chainId !== "1337") {
     // ⏳ Wait before verification (optional safety delay)
@@ -111,8 +101,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
       await verifyContract({
         contractPath: contractPath,
-        contractAddress: implAddress,
-        args: tokenArgs || [],
+        contractAddress: AYNITokenProxyContractAddress,
       });
 
       console.log("AYNIToken Implementation verified on Etherscan");
@@ -127,8 +116,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
       await verifyContract({
         contractPath: "contracts/AYNIGovernor.sol:AYNIGovernor",
-        contractAddress: implAddressGovernor,
-        args: governorArgs || [],
+        contractAddress: AYNIGovernorProxy,
       });
 
       console.log("AYNIGovernor Implementation verified on Etherscan");

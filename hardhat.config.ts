@@ -23,7 +23,7 @@ const TEST_MNEMONIC: string = "test test test test test test test test test test
 const mnemonic: string = process.env.MNEMONIC || TEST_MNEMONIC;
 
 // TODO: change before deployment
-const privateKey: string = process.env.PRIVATE_KEY_MAINNET || "";
+const privateKey: string = process.env.PRIVATE_KEY_TESTNET || "";
 
 /**
  * - If $PRIVATE_KEY is defined, use it.
