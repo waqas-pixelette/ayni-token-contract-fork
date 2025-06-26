@@ -30,15 +30,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const AYNITokenProxyContractAddress = await AYNITokenProxy.getAddress();
   console.log("AYNIToken (Proxy) deployed to:", AYNITokenProxyContractAddress);
 
-  const implAddress = await upgrades.erc1967.getImplementationAddress(
-    AYNITokenProxyContractAddress
-  );
-  console.log("AYNI Token Implementation deployed to:", implAddress);
-
   // Verify Contract inside the script
   if (chainId !== "31337" && chainId !== "1337") {
-    // ⏳ Wait before verification (optional safety delay)
-    await new Promise((res) => setTimeout(res, 10000));
 
     const contractPath = "contracts/AYNIToken.sol:AYNIToken";
 
@@ -46,8 +39,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     try {
       await verifyContract({
         contractPath: contractPath,
-        contractAddress: implAddress,
-        args: args || [],
+        contractAddress: AYNITokenProxyContractAddress
       });
 
       console.log("Implementation verified on Etherscan");
