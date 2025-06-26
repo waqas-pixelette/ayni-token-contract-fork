@@ -16,7 +16,7 @@ library Errors {
 
 contract AYNIToken is ERC20BurnableUpgradeable, ERC20PermitUpgradeable, ERC20VotesUpgradeable, AccessControlUpgradeable, UUPSUpgradeable {
 
-    string public constant tokenName = "AYNI Token";
+    string public constant tokenName = "Ayni Gold";
     string public constant tokenSymbol = "AYNI";
 
     // ROLES

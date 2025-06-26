@@ -23,7 +23,7 @@ const TEST_MNEMONIC: string = "test test test test test test test test test test
 const mnemonic: string = process.env.MNEMONIC || TEST_MNEMONIC;
 
 // TODO: change before deployment
-const privateKey: string = process.env.PRIVATE_KEY_TESTNET || "";
+const privateKey: string = process.env.PRIVATE_KEY_MAINNET || "";
 
 /**
  * - If $PRIVATE_KEY is defined, use it.
@@ -92,12 +92,14 @@ const config: HardhatUserConfig = {
   gasReporter: {
     enabled: process.env.REPORT_GAS ? true : false,
     currency: "USD",
+    gasPrice: 1.5, // in gwei
     // gasPrice: process.env.GAS_PRICE, // if commented out then it fetches from ethGasStationAPI
     coinmarketcap: process.env.COIN_MARKET_CAP_API_KEY || undefined,
     excludeContracts: [],
     src: "./contracts",
     maxMethodDiff: 10,
     maxDeploymentDiff: 10,
+    runOnCompile: true,
   },
   namedAccounts: {
     deployer: {
